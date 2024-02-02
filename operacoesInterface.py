@@ -5,14 +5,17 @@ import cv2
 
 #1. a) Operações Algébricas
 def gerarDissolveCruzadoUniforme(imgA, imgB, t, img_out):
-    def chamarDissolveCruzado(imgA, imgB, t, img_out):
-        img_out = dissolve(imgA, imgB, t, 1)
-        cv2.imshow("Resultado", img_out)
+    if (imgA.shape == imgB.shape):
+        def chamarDissolveCruzado(imgA, imgB, t, img_out):
+            img_out = dissolve(imgA, imgB, t, 1)
+            cv2.imshow("Resultado", img_out)
 
-    if ((len(imgA) > 1) and (len(imgB) > 1)):
-        return chamarDissolveCruzado(imgA, imgB, t, img_out)
+        if ((len(imgA) > 1) and (len(imgB) > 1)):
+            return chamarDissolveCruzado(imgA, imgB, t, img_out)
+        else:
+            CTkMessagebox(title="Erro!", message="A imagem 1 e imagem 2 tem que ser definidas!")
     else:
-        CTkMessagebox(title="Erro!", message="A imagem 1 e imagem 2 tem que ser definidas!")
+        CTkMessagebox(title="Erro!", message="A imagem 1 e imagem 2 tem que ser do mesmo tamanho!")
 
 def gerarDissolveCruzadoNaoUniforme(imgA, imgB, t, img_out):
     def chamarDissolveCruzado(imgA, imgB, t, img_out):
