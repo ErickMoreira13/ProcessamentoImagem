@@ -521,12 +521,12 @@ def high_boost(img, k):
 
     for i in range(inicio, h):
         for j in range(inicio, w):
-            img_res[i, j] = imgM[i, j] - imgC[i, j]
+            img_res[i, j] = imgC[i, j] - imgM[i, j]
 
-    img_out = img_res[inicio:(w+add), inicio:(h+add)].copy()
-
-    for i in range(h):
-        for j in range(h):
+    img_out = img_res[0:(w+add), 0:(h+add)].copy()
+    
+    for i in range(h-1):
+        for j in range(w-1):
             img_out[i, j] = (k*img_out[i, j]) + img[i, j]
     
     return img_out
